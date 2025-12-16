@@ -22,7 +22,11 @@ const Game = () => {
 
   const checkWinner = (newBoard: Player[]) => {
     for (const [a, b, c] of winningCombinations) {
-      if (newBoard[a] && newBoard[a] === newBoard[b] && newBoard[a] === newBoard[c]) {
+      if (
+        newBoard[a] &&
+        newBoard[a] === newBoard[b] &&
+        newBoard[a] === newBoard[c]
+      ) {
         return newBoard[a];
       }
     }
