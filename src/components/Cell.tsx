@@ -1,5 +1,4 @@
-import xImg from "../assets/x.png";
-import oImg from "../assets/o.png";
+import { OIcon, XIcon } from "../assets";
 import type { Player } from "./Game";
 
 interface CellProps {
@@ -10,7 +9,7 @@ interface CellProps {
 export default function Cell({ value, onClick }: CellProps) {
   return (
     <div className="cell" onClick={onClick}>
-      {value && <img src={value === "X" ? xImg : oImg} alt={value} />}
+      {value && <img src={value === "X" ? XIcon : OIcon} alt={value} />}
     </div>
   );
 }
