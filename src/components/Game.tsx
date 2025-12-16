@@ -15,7 +15,7 @@ const winningCombinations = [
   [2, 4, 6],
 ];
 
-export default function Game() {
+const Game = () => {
   const [board, setBoard] = useState<Player[]>(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState<Player>("X");
   const [winner, setWinner] = useState<Player | "draw">(null);
@@ -41,6 +41,7 @@ export default function Game() {
     setBoard(newBoard);
 
     const result = checkWinner(newBoard);
+
     if (result) {
       setWinner(result);
     } else {
@@ -60,4 +61,6 @@ export default function Game() {
       {winner && <Result winner={winner} onReset={resetGame} />}
     </div>
   );
-}
+};
+
+export default Game;
