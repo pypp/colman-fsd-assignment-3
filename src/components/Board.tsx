@@ -1,5 +1,5 @@
-import Cell from "./Cell";
-import type { Player } from "./Game";
+import Cell from './Cell';
+import type { Player } from './Game';
 
 interface BoardProps {
   board: Player[];
