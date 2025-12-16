@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Board from "./Board";
-import Result from "./Result";
+import { useState } from 'react';
+import Board from './Board';
+import Result from './Result';
 
-export type Player = "X" | "O" | null;
+export type Player = 'X' | 'O' | null;
 
 const winningCombinations = [
   [0, 1, 2],
@@ -15,10 +15,10 @@ const winningCombinations = [
   [2, 4, 6],
 ];
 
-export default function Game() {
+const Game = () => {
   const [board, setBoard] = useState<Player[]>(Array(9).fill(null));
-  const [currentPlayer, setCurrentPlayer] = useState<Player>("X");
-  const [winner, setWinner] = useState<Player | "draw">(null);
+  const [currentPlayer, setCurrentPlayer] = useState<Player>('X');
+  const [winner, setWinner] = useState<Player | 'draw'>(null);
 
   const checkWinner = (newBoard: Player[]) => {
     for (const [a, b, c] of winningCombinations) {
@@ -30,7 +30,7 @@ export default function Game() {
         return newBoard[a];
       }
     }
-    return newBoard.every((cell) => cell) ? "draw" : null;
+    return newBoard.every((cell) => cell) ? 'draw' : null;
   };
 
   const handleCellClick = (index: number) => {
@@ -41,16 +41,17 @@ export default function Game() {
     setBoard(newBoard);
 
     const result = checkWinner(newBoard);
+
     if (result) {
       setWinner(result);
     } else {
-      setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
+      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
     }
   };
 
   const resetGame = () => {
     setBoard(Array(9).fill(null));
-    setCurrentPlayer("X");
+    setCurrentPlayer('X');
     setWinner(null);
   };
 
@@ -60,4 +61,6 @@ export default function Game() {
       {winner && <Result winner={winner} onReset={resetGame} />}
     </div>
   );
-}
+};
+
+export default Game;
